@@ -4,7 +4,6 @@ import ErrorComponent from 'components/Error';
 import apiService from '../../services/apiService';
 import Loader from 'components/Loader';
 import Status from '../../services/status';
-import ShowMore from 'react-simple-show-more';
 import styles from './Reviews.module.css';
 
 export default function Reviews() {
@@ -41,19 +40,9 @@ export default function Reviews() {
           {reviews.map(review => (
             <li key={review.id} className={styles.item}>
               <h2 className={styles.author}>{review.author}</h2>
-              <p>
-                <ShowMore
-                  text={review.content}
-                  length={700}
-                  showMoreLabel=" Show more >>"
-                  showLessLabel=" Show less <<"
-                  style={{
-                    cursor: 'pointer',
-                    color: 'rgba(238, 138, 16, 0.952)',
-                    fontWeight: 'bold',
-                  }}
-                />
-              </p>
+              <p>{review.content}</p>
+          
+              
             </li>
           ))}
         </ul>
