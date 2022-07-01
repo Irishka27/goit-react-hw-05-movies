@@ -1,15 +1,14 @@
-import { Audio } from  'react-loader-spinner';
-import s from './Loader.module.css';
+import {Audio} from 'react-loader-spinner';
+import styles from './Loader.module.css';
 
 export default function Loader() {
   return (
     <Audio
-      className={s.loader}
-    // 
+      className={styles.loader}
       color="#fff"
       height={80}
       width={80}
-    //   timeout={4000}
+      timeout={4000}
     />
   );
 }
