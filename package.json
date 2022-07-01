@@ -8,7 +8,6 @@
     "@testing-library/react": "^12.1.4",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
-    "material-ui-pagination": "^1.1.6",
     "nanoid": "^3.3.4",
     "normalize.css": "^8.0.1",
     "react": "^18.1.0",
