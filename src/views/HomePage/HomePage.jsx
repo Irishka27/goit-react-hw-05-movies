@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link, useLocation, useHistory } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import apiService from 'services/apiService';
 import Status from 'services/status';
 import Loader from 'components/Loader';
@@ -9,11 +9,10 @@ import styles from './HomePage.module.css';
 import Button from 'components/Button';
 
 export default function HomePage() {
-  const history = useHistory();
   const location = useLocation();
   const [movies, setMovies] = useState(null);
   const [page, setPage] = useState(1);
-  const [totalPage, setTotalPage] = useState(0);
+  const [ , setTotalPage] = useState(0);
   const [error, setError] = useState(null);
   const [status, setStatus] = useState(Status.IDLE);
 

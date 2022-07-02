@@ -20,7 +20,7 @@ export default function MoviesPage() {
   const location = useLocation();
   const { url } = useRouteMatch();
   const [query, setQuery] = useState('');
-  const [totalPage, setTotalPage] = useState(0);
+  const [ , setTotalPage] = useState(0);
   const [page, setPage] = useState(1);
   const [movies, setMovies] = useState(null);
   const [error, setError] = useState(null);
