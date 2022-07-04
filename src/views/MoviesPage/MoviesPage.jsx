@@ -64,7 +64,8 @@ export default function MoviesPage() {
     setMovies(null);
     setError(null);
     setStatus(Status.IDLE);
-    history.push({ ...location, search: `query=${newSearch}&page=1` });
+    setPage(page);
+    history.push({ ...location, search: `query=${newSearch}` });
   };
 
   const onHandlePage = () => {
@@ -84,6 +85,13 @@ export default function MoviesPage() {
           <ul className={styles.moviesList}>
             {movies.map(movie => (
               <li key={movie.id} className={styles.moviesItem}>
+                  <NavLink
+                  to={{
+                    pathname: `${url}/${movie.id}`,
+                    state: { from: { location } },
+                  }}
+                  className={styles.link}
+                >
                 <img
                   src={
                     movie.poster_path
@@ -94,13 +102,7 @@ export default function MoviesPage() {
                   width="320"
                   className={styles.poster}
                 />
-                <NavLink
-                  to={{
-                    pathname: `${url}/${movie.id}`,
-                    state: { from: { location } },
-                  }}
-                  className={styles.link}
-                >
+              
                   <p className={styles.movieTitle}>{movie.title}</p>
                 </NavLink>
               </li>

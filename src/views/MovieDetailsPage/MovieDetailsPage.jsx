@@ -5,7 +5,6 @@ import {
   useRouteMatch,
   Switch,
   Route,
-  useHistory,
   useLocation,
 } from 'react-router-dom';
 
@@ -22,13 +21,16 @@ const Reviews = lazy(() =>
 );
 
 export default function MovieDetailsPage() {
-  const history = useHistory();
+  // const history = useHistory();
   const location = useLocation();
   const [movie, setMovie] = useState(null);
   const { movieId } = useParams();
   const { url, path } = useRouteMatch();
   const [error, setError] = useState(null);
   const [status, setStatus] = useState(Status.IDLE);
+  const [prevLocation, ] = useState(
+    location?.state?.from.location ?? "/"
+  );
 
   useEffect(() => {
     setStatus(Status.PENDING);
@@ -45,9 +47,9 @@ export default function MovieDetailsPage() {
       });
   }, [movieId, error]);
 
-  const onGoBack = () => {
-    history.push(location?.state?.from?.location ?? '/');
-  };
+  // const onGoBack = () => {
+  //   history.push(location?.state?.from?.location ?? '/');
+  // };
 
   return (
     <>
@@ -57,9 +59,14 @@ export default function MovieDetailsPage() {
 
       {status === Status.RESOLVED && (
         <>
-          <button type="button" className={styles.button} onClick={onGoBack}>
+        <NavLink
+            to={prevLocation}
+          >
+            <button type="button" className={styles.button}>
             &#8656;&ensp; Go back
           </button>
+          </NavLink>
+         
           <div className={styles.movies}>
             <img
               src={
